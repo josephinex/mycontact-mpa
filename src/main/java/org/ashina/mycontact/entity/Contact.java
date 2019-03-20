@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "contact")
@@ -19,7 +20,7 @@ public class Contact {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @NotEmpty
+    @NotEmpty(message = "This field should not be empty")
     @Column(name = "name", nullable = false)
     private String name;
 
@@ -27,6 +28,10 @@ public class Contact {
     @Column(name = "email")
     private String email;
 
+    @Size.List ({
+        @Size(min=5, message="The field must be at least {min} characters"),
+        @Size(max=10, message="The field must be less than {max} characters")
+    })
     @Column(name = "phone")
     private String phone;
 

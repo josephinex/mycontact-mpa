@@ -27,7 +27,8 @@
 
 				<div class="form-group">
 					<input class="form-control" type="text" placeholder="Contact phone"
-						   th:field="*{phone}" />
+						   th:field="*{phone}" th:errorclass="field-error" />
+					<em th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></em>
 				</div>
 
 				<div class="form-group">
